@@ -1,57 +1,43 @@
 // import { TrackShortcutsMenu } from '@/components/TrackShortcutsMenu'
-import { StopPropagation } from '@/components/utils/StopPropagation'
+// import { StopPropagation } from '@/components/utils/StopPropagation'
 import { unknownTrackImageUri } from '@/constants/Images'
+import unknownTrackImage from '@/assets/unknown_track.png'
 import { colors, fontSize } from '@/constants/Tokens'
 import { defaultStyles } from '@/styles'
-import { Ionicons } from '@expo/vector-icons'
+import { Entypo, Ionicons } from '@expo/vector-icons'
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native'
-import FastImage from 'react-native-fast-image'
-import LoaderKit from 'react-native-loader-kit'
-import { Track, useActiveTrack, useIsPlaying } from 'react-native-track-player'
+// import FastImage from 'react-native-fast-image'
+// import LoaderKit from 'react-native-loader-kit'
+// import { Track, useActiveTrack, useIsPlaying } from 'react-native-track-player'
+import { Image as FastImage } from 'expo-image';
 
 export type TracksListItemProps = {
-	track: Track
-	onTrackSelect: (track: Track) => void
+	track: { title: string, image?: string; artist?: string }
 }
 
 export const TracksListItem = ({
 	track,
-	onTrackSelect: handleTrackSelect,
+	// onTrackSelect: handleTrackSelect,
 }: TracksListItemProps) => {
-	const { playing } = useIsPlaying()
+	// const { playing } = useIsPlaying()
 
-	const isActiveTrack = useActiveTrack()?.url === track.url
+	const isActiveTrack = false
 
 	return (
-		<TouchableHighlight onPress={() => handleTrackSelect(track)}>
+		<TouchableHighlight >
 			<View style={styles.trackItemContainer}>
 				<View>
 					<FastImage
-						source={{
-							uri: track.artwork ?? unknownTrackImageUri,
-							priority: FastImage.priority.normal,
-						}}
+						// source={{
+						// 	uri: track.image ?? unknownTrackImageUri,
+						// 	priority: FastImage.priority.normal,
+						// }}
+						source={track.image ?? unknownTrackImage}
 						style={{
 							...styles.trackArtworkImage,
 							opacity: isActiveTrack ? 0.6 : 1,
 						}}
 					/>
-
-					{isActiveTrack &&
-						(playing ? (
-							<LoaderKit
-								style={styles.trackPlayingIconIndicator}
-								name="LineScaleParty"
-								color={colors.icon}
-							/>
-						) : (
-							<Ionicons
-								style={styles.trackPausedIndicator}
-								name="play"
-								size={24}
-								color={colors.icon}
-							/>
-						))}
 				</View>
 
 				<View
@@ -80,12 +66,6 @@ export const TracksListItem = ({
 							</Text>
 						)}
 					</View>
-
-					<StopPropagation>
-						{/* <TrackShortcutsMenu track={track}>
-							<Entypo name="dots-three-horizontal" size={18} color={colors.icon} />
-						</TrackShortcutsMenu> */}
-					</StopPropagation>
 				</View>
 			</View>
 		</TouchableHighlight>

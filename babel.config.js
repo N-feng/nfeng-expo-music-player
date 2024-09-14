@@ -9,6 +9,7 @@ module.exports = function (api) {
 				'module-resolver',
 				{
 					alias: {
+						'@/components': './components',
 						'@/constants': './constants',
 						'@/helpers': './helpers',
 						'@/hooks': './hooks',
