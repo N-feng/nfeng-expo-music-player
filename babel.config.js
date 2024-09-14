@@ -1,10 +1,11 @@
 module.exports = function (api) {
-	api.cache(true)
-	return {
-		presets: ['babel-preset-expo'],
-		plugins: [
-			require.resolve('expo-router/babel'),
-			[
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
+    plugins: [
+      // Required for expo-router
+      'expo-router/babel',
+      [
 				'module-resolver',
 				{
 					alias: {
@@ -17,6 +18,6 @@ module.exports = function (api) {
 					},
 				},
 			],
-		],
-	}
-}
+    ],
+  };
+};

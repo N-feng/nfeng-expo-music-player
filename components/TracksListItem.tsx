@@ -1,9 +1,9 @@
-import { TrackShortcutsMenu } from '@/components/TrackShortcutsMenu'
+// import { TrackShortcutsMenu } from '@/components/TrackShortcutsMenu'
 import { StopPropagation } from '@/components/utils/StopPropagation'
 import { unknownTrackImageUri } from '@/constants/Images'
 import { colors, fontSize } from '@/constants/Tokens'
 import { defaultStyles } from '@/styles'
-import { Entypo, Ionicons } from '@expo/vector-icons'
+import { Ionicons } from '@expo/vector-icons'
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import LoaderKit from 'react-native-loader-kit'
@@ -82,9 +82,9 @@ export const TracksListItem = ({
 					</View>
 
 					<StopPropagation>
-						<TrackShortcutsMenu track={track}>
+						{/* <TrackShortcutsMenu track={track}>
 							<Entypo name="dots-three-horizontal" size={18} color={colors.icon} />
-						</TrackShortcutsMenu>
+						</TrackShortcutsMenu> */}
 					</StopPropagation>
 				</View>
 			</View>
