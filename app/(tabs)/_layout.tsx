@@ -1,6 +1,9 @@
+import { colors, fontSize } from '@/constants/Tokens'
 import { FontAwesome, FontAwesome6, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
+import { BlurView } from 'expo-blur'
 import { Link, Tabs } from 'expo-router';
 import { Pressable, useColorScheme } from 'react-native';
+import { StyleSheet } from 'react-native'
 
 import Colors from '../../constants/Colors';
 
@@ -20,36 +23,48 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-      }}>
-      {/* <Tabs.Screen
-        name="index"
+        tabBarActiveTintColor: colors.primary,
+        tabBarLabelStyle: {
+          fontSize: fontSize.xs,
+          fontWeight: '500',
+        },
+        headerShown: false,
+        tabBarStyle: {
+          position: 'absolute',
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
+          borderTopWidth: 0,
+          paddingTop: 8,
+        },
+        tabBarBackground: () => (
+          <BlurView
+            intensity={95}
+            style={{
+              ...StyleSheet.absoluteFillObject,
+              overflow: 'hidden',
+              borderTopLeftRadius: 20,
+              borderTopRightRadius: 20,
+            }}
+          />
+        ),
+      }}
+    >
+    <Tabs.Screen
+        name="favorites"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
+          title: 'Favorites',
+          tabBarIcon: ({ color }) => <FontAwesome name="heart" size={20} color={color} />,
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="playlists"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Playlists',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="playlist-play" size={28} color={color} />
+          ),
         }}
-      /> */}
+      />
       <Tabs.Screen
         name="(songs)"
         options={{
@@ -59,6 +74,13 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+					name="artists"
+					options={{
+						title: 'Artists',
+						tabBarIcon: ({ color }) => <FontAwesome6 name="users-line" size={20} color={color} />,
+					}}
+				/>
     </Tabs>
   );
 }
