@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "nfeng-react-music-player",
-    "slug": "nfeng-react-music-player",
+    "name": "nfeng-expo-music-player",
+    "slug": "nfeng-expo-music-player",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
