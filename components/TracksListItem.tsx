@@ -8,11 +8,11 @@ import { Entypo, Ionicons } from '@expo/vector-icons'
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native'
 // import FastImage from 'react-native-fast-image'
 // import LoaderKit from 'react-native-loader-kit'
-// import { Track, useActiveTrack, useIsPlaying } from 'react-native-track-player'
+import { Track, useActiveTrack, useIsPlaying } from 'react-native-track-player'
 import { Image as FastImage } from 'expo-image';
 
 export type TracksListItemProps = {
-	track: { title: string, image?: string; artist?: string }
+	track: Track
 }
 
 export const TracksListItem = ({

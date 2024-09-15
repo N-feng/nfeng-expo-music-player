@@ -1,8 +1,10 @@
+import { useLogTrackPlayerState } from '@/hooks/useLogTrackPlayerState';
+import { useSetupTrackPlayer } from '@/hooks/useSetupTrackPlayer';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useColorScheme } from 'react-native';
 
 export {
@@ -38,6 +40,16 @@ export default function RootLayout() {
   if (!loaded) {
     return null;
   }
+
+  // const handleTrackPlayerLoaded = useCallback(() => {
+	// 	SplashScreen.hideAsync()
+	// }, [])
+
+  // useSetupTrackPlayer({
+	// 	onLoad: handleTrackPlayerLoaded,
+	// })
+
+  // useLogTrackPlayerState()
 
   return <RootLayoutNav />;
 }
